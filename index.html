@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#123b31">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Modli Exams">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="description" content="تدريب أوفلاين للإنجليزية والفرنسية مع امتحان متكامل من 50 سؤال استماع و50 سؤال قراءة">
+  <title>Modli Exams | تدريب اللغات</title>
+  <link rel="icon" href="logo.jpeg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="bank.js"></script>
+  <script defer src="fr-bank.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home" aria-label="Modli Exams"><img src="logo.jpeg" alt="شعار معهد اللغات للقوات المسلحة"><span>Modli <b>Exams</b></span></a>
+  <span class="offline"><i></i> يعمل دون إنترنت</span>
+</header>
+<main id="app" class="shell">
+  <section id="home" class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">معهد اللغات للقوات المسلحة · MINISTRY OF DEFENCE LANGUAGE INSTITUTE</p>
+      <h1>تدرّب بثقة.<br><span>تقدّم خطوة خطوة.</span></h1>
+      <p class="intro">اختر اللغة التي تريد التدريب عليها. لكل لغة بنك أسئلة واختبار مستقل بمستويات CEFR من A1 إلى C2.</p>
+    </div>
+    <div class="hero-seal"><img src="logo.jpeg" alt="شعار المعهد"><span>MODLI EXAMS · A1—C2</span></div>
+  </section>
+  <section id="language-choices" class="language-section" aria-labelledby="language-choice-title">
+    <div class="language-section-title"><p class="eyebrow">اختر مسار التدريب</p><h2 id="language-choice-title">ابدأ باللغة التي تريدها</h2></div>
+    <div class="language-choices">
+      <button id="choose-en" class="language-card english-card" type="button" aria-label="الدخول إلى بنك الأسئلة الإنجليزي، 3000 سؤال">
+        <span class="language-card-top"><span class="language-icon english-icon" aria-hidden="true">EN</span><span class="language-card-name"><b dir="ltr">English</b><strong>الإنجليزية</strong></span><span class="language-card-count">3,000 سؤال إنجليزي</span><span class="language-card-arrow" aria-hidden="true">←</span></span>
+        <span class="language-card-detail">1,500 قراءة <i>·</i> 1,500 استماع</span>
+      </button>
+      <button id="choose-fr" class="language-card french-card" type="button" aria-label="الدخول إلى بنك الأسئلة الفرنسي، 1000 سؤال">
+        <span class="language-card-top"><span class="language-icon french-icon" aria-hidden="true">FR</span><span class="language-card-name"><b dir="ltr">Français</b><strong>الفرنسية</strong></span><span class="language-card-count">1,000 سؤال فرنسي</span><span class="language-card-arrow" aria-hidden="true">←</span></span>
+        <span class="language-card-detail">500 قراءة <i>·</i> 500 استماع</span>
+      </button>
+    </div>
+  </section>
+  <section id="setup" class="setup panel hidden">
+    <div class="section-title"><div><p id="setup-eyebrow" class="eyebrow">الإنجليزية</p><h2>إعداد الاختبار</h2></div><button id="change-language" class="change-language" type="button">← اختيار لغة أخرى</button></div>
+    <div class="form-grid">
+      <label class="field"><span>المستوى</span><select id="level"><option value="ALL">كل المستويات</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+      <label class="field"><span>نوع التدريب</span><select id="kind"><option value="mixed">اختبار متكامل — استماع وقراءة بالتساوي</option><option value="reading">تدريب قراءة فقط</option><option value="listening">تدريب استماع فقط</option></select></label>
+      <label class="field"><span>عدد الأسئلة <b id="count-label">20 سؤالًا</b></span><input id="count" type="range" min="10" max="100" step="10" value="20"><span id="count-range-hint" class="range-hint"><span>10</span><span>100</span></span></label>
+    </div>
+    <div class="setup-bottom"><p id="available">اختر اللغة أولًا لعرض عدد الأسئلة المتاحة.</p><button id="start" class="primary">ابدأ التدريب <span aria-hidden="true">←</span></button></div>
+  </section>
+  <section class="note"><span class="note-mark">i</span><p><strong>تدريبك، على جهازك.</strong> لا يحتاج التطبيق إلى حساب أو اتصال بالإنترنت. تُحفظ نتيجة آخر تدريب على هذا الجهاز فقط.</p></section>
+</main>
+<section id="exam" class="shell exam-shell hidden">
+  <div class="exam-head">
+    <div class="exam-actions"><button id="finish" class="finish-button">إنهاء الامتحان</button></div>
+    <div><span id="exam-badge" class="badge">A1 · استماع أولًا</span><h1 id="exam-title">تدريب الإنجليزية</h1></div>
+    <div class="score-pill">النتيجة <strong id="score">0</strong></div>
+  </div>
+  <div class="exam-layout">
+    <div class="exam-main">
+      <div class="progress-row"><span id="progress-text">السؤال 1 من 100</span><div class="progress"><span id="progress-bar"></span></div></div>
+      <article id="question-card" class="question-card">
+        <div class="question-meta"><span id="question-type" class="type-label">استماع</span><span id="question-level" class="level-label">A1</span></div>
+        <div id="audio-controls" class="audio-box hidden">
+          <div><strong>استمع جيدًا إلى الحوار</strong><small id="audio-status">اضغط «بدء الاستماع»؛ يبدأ وقت الإجابة بعد انتهاء المقطع.</small></div>
+          <div class="audio-actions"><button id="play-audio" class="audio-button">▶ بدء الاستماع</button><button id="stop-audio" class="stop-audio-button" disabled>■ إيقاف</button><button id="replay-audio" class="replay-button" title="إعادة الاستماع">↻</button><button id="toggle-transcript" class="transcript-button" type="button" aria-controls="passage" aria-expanded="false">▤ إظهار النص</button><label class="speed">السرعة <select id="speed"><option value="0.78">بطيئة</option><option value="0.9" selected>واضحة</option><option value="1">عادية</option></select></label></div>
+        </div>
+        <div id="timer-box" class="timer-box hidden"><span>الوقت المتبقي للإجابة</span><strong id="timer-value">20</strong><div class="timer-track"><i id="timer-bar"></i></div></div>
+        <div id="passage" class="passage hidden"></div>
+        <h2 id="question" class="question-text"></h2>
+        <div id="options" class="options"></div>
+        <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+        <div class="question-footer"><span id="answered-hint">استمع إلى المقطع أولًا.</span><button id="next" class="primary" disabled>السؤال التالي <span>←</span></button></div>
+      </article>
+    </div>
+    <aside class="exam-sidebar" aria-label="ملخص الامتحان والتنقل بين الأسئلة">
+      <h2>ملخص الامتحان</h2>
+      <div class="exam-breakdown">
+        <div class="exam-stat exam-stat-total"><strong id="exam-total">100</strong><span>إجمالي الأسئلة</span></div>
+        <div class="exam-stat"><strong id="exam-listening">50</strong><span>استماع</span></div>
+        <div class="exam-stat"><strong id="exam-reading">50</strong><span>قراءة</span></div>
+      </div>
+      <div class="solved-summary"><span>الأسئلة المنجزة</span><strong><b id="exam-solved">0</b> / <i id="exam-total-count">100</i></strong></div>
+      <div class="question-nav-heading"><h3>خريطة الأسئلة</h3><span class="nav-legend"><i class="legend-correct"></i>صحيح</span><span class="nav-legend"><i class="legend-wrong"></i>خطأ / وقت</span></div>
+      <div id="question-nav" class="question-nav" aria-label="اختر سؤالًا للانتقال إليه"></div>
+    </aside>
+  </div>
+</section>
+<section id="result" class="shell result-shell hidden">
+  <div class="result-card"><p class="eyebrow">انتهى الامتحان</p><h1 id="result-title">أحسنت!</h1><div class="result-score"><strong id="final-score">0/20</strong><span>إجابة صحيحة من الأسئلة التي أجبت عنها</span></div><p id="result-message"></p><div class="result-actions"><button id="again" class="primary">تدريب جديد</button><button id="review" class="secondary">عرض الإجابات</button><button id="home-button" class="secondary">العودة إلى الصفحة الرئيسية</button></div><div id="review-list" class="review-list hidden"></div></div>
+</section>
+<footer><span>Modli Exams</span><span>تدريب ذاتي · دون اتصال</span></footer>
+<audio id="audio-player" preload="none"></audio>
+</body>
+</html>
